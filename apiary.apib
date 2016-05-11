@@ -1,0 +1,224 @@
+FORMAT: 1A
+HOST: http://api.pinnaclesports.com/profile
+
+# Responsible gaming
+
+*Responsible gaming* is meant to promote autocontrol in the gaming industry.
+
+## Headers
+
+`Content-Type: application/json`
+
+`Authorization: {token}`
+
+`Accept-Language: en-GB`
+
+## Response Codes
+
+<table> 
+    <tr> 
+        <td>200</td><td nowrap><code>OK</code></td> 
+    </tr> 
+    <tr> 
+        <td>201</td><td nowrap><code>Created</code></td> 
+    </tr> 
+    <tr> 
+        <td>204</td><td nowrap><code>No Content</code></td> 
+    </tr>
+    <tr> 
+        <td>400</td><td nowrap><code>Bad Request</code></td> 
+    </tr> 
+    <tr> 
+        <td>401</td><td nowrap><code>Unauthorized</code></td> 
+    </tr>
+        <tr> 
+        <td>404</td><td nowrap><code>Not found</code></td> 
+    </tr>
+    <tr> 
+        <td>500</td><td nowrap><code>Internal Server Error</code></td> 
+    </tr> 
+</table> 
+
+## Deposit limit [/deposit-limit]
+
+### Retrieve customer's deposit limit [GET]
+
++ Request
+
+    + Headers
+         
+            Content-Type: application/json
+            Accept-Language: en-GB
+            Authorization: {token}  
+
++ Response 200
+
+    + Body
+    
+            {
+              "frequency": "Weekly",
+              "limit": 100,
+              "resetsAt": "20:00 22/04/2016",
+              "timeRemaining": "1 day, 4 hours",
+              "coolOffPeriod": "7 days"
+            }
+
++ Response 401
+
++ Response 404
+
++ Response 500
+
+### Set customer's deposit limit [PUT]
+
++ Request(application/json)
+
+
+    + Headers
+         
+            Accept-Language: en-GB
+            Authorization: {token}  
+
+    + Body
+        
+            {
+                "frequency": "Weekly",
+                "limit": 100
+            }
+
++ Response 204
+
++ Response 400 (application/json)
+
+    + Body
+            
+            {
+                "message": "The request is invalid.",
+                "errors": 
+                    {
+                        "request.frequency": ["The provided frequency is not allowed"],
+                        "request.limit": ["The limit must be  a positive number"]
+                    }
+            }
+            
++ Response 401
+
++ Response 500
+
+### Disable customer's deposit limit [DELETE]
+
++ Request
+
+    + Headers
+         
+            Authorization: {token}  
+
+
++ Response 204
+
++ Response 500
+
+## Self-exclusion [/self-exclusion]
+
+### Retrieve customer's self-exclusion [GET]
+
++ Request
+
+    + Headers
+         
+            Content-Type: application/json
+            Accept-Language: en-GB
+            Authorization: {token}  
+
++ Response 200
+
+    + Body
+    
+            {
+              "period": "EighteenMonths",
+              "limit": 100,
+              "resetsAt": "20:00 22/04/2016",
+              "timeRemaining": "1 day, 4 hours",
+              "coolOffPeriod": "7 days"
+            }
+
++ Response 401
+
++ Response 404
+
++ Response 500
+
+### Set customer's self-exclusion [PUT]
+
++ Request(application/json)
+
+
+    + Headers
+         
+            Accept-Language: en-GB
+            Authorization: {token}  
+
+    + Body
+        
+            {
+                "period": "EighteenMonths",
+                "limit": 100
+            }
+
++ Response 204
+
++ Response 400 (application/json)
+
+    + Body
+            
+            {
+                "message": "The request is invalid.",
+                "errors": 
+                    {
+                        "request.period": ["The provided period is not allowed"],
+                        "request.limit": ["The limit must be  a positive number"]
+                    }
+            }
+            
++ Response 401
+
++ Response 500
+
+### Disable customer's self-exclusion [DELETE]
+
++ Request
+
+    + Headers
+         
+            Authorization: {token}  
+
+
++ Response 204
+
++ Response 500
+
+## Cooling-off period [/cooling-off]
+
+### Retrieve customer's cooling-off period [GET]
+
++ Request
+
+    + Headers
+         
+            Content-Type: application/json
+            Accept-Language: en-GB
+            Authorization: {token}  
+
++ Response 200
+
+    + Body
+    
+            {
+              "coolingOffPeriod": "7 days"
+            }
+
++ Response 401
+
++ Response 404
+
++ Response 500
