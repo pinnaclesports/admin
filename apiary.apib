@@ -1,9 +1,9 @@
 FORMAT: 1A
-HOST: http://apix.pinnaclesports.com/responsible-gaming
+HOST: http://api.pinnaclesports.com
 
-# Responsible gaming
+# Api documentation
 
-*Responsible gaming* is meant to promote autocontrol in the gaming industry.
+Here you can find any website related resource.
 
 ## Headers
 
@@ -37,10 +37,9 @@ HOST: http://apix.pinnaclesports.com/responsible-gaming
     </tr> 
 </table> 
 
-#Group Customer
+#Group Responsible gaming
 
-
-## Deposit limit [/customers/{customerId}/deposit-limit]
+## Customer's deposit limit [/customers/{customerId}/deposit-limit]
 
 ### Retrieve customer's deposit limit [GET]
 
@@ -74,6 +73,7 @@ HOST: http://apix.pinnaclesports.com/responsible-gaming
 + Response 404
 
 + Response 500
+
 
 ### Set customer's deposit limit [PUT]
 
@@ -130,7 +130,7 @@ HOST: http://apix.pinnaclesports.com/responsible-gaming
 
 + Response 500
 
-## Self-exclusion [/customer/{customerId}/self-exclusion]
+## Customer's self-exclusion [/customers/{customerId}/self-exclusion]
 
 ### Retrieve customer's self-exclusion [GET]
 
@@ -210,7 +210,7 @@ HOST: http://apix.pinnaclesports.com/responsible-gaming
 
 + Response 500
 
-## Cooling-off period [/customer/{customerId}/cooling-off]
+## Customer's cooling-off period [/customers/{customerId}/cooling-off-period]
 
 ### Retrieve customer's cooling-off period [GET]
 
@@ -230,7 +230,7 @@ HOST: http://apix.pinnaclesports.com/responsible-gaming
     + Body
     
             {
-              "coolingOffPeriod": "7 days"
+              "coolingOffPeriodInHours": 24
             }
 
 + Response 401
@@ -238,3 +238,5 @@ HOST: http://apix.pinnaclesports.com/responsible-gaming
 + Response 404
 
 + Response 500
+
+## License's cooling-off period [/licenses/{licenseId}/cooling-off-period]
