@@ -39,18 +39,48 @@ As a logged in partner, you can perform any action on our backend services.
 
 #Group Responsible gaming
 
-## Customer's deposit limit [/customers/{customerId}/deposit-limit]
+## Customers with limits [/customers-with-limits]
 
-### Retrieve customer's deposit limit [GET]
+### Retrieve [GET]
 
-+ Parameters
-    + customerId (string)
 
-+ Request
++ Request (application/json)
 
     + Headers
          
-            Content-Type: application/json
+            Authorization: {token}  
+
++ Response 200
+
+    + Body
+    
+            [
+                {
+                  "customerId": "test1"
+                },
+                {
+                  "customerId": "test2"
+                }
+            ]
+
++ Response 401
+
++ Response 404
+
++ Response 500
+
+
+## Deposit limit [/deposit-limit/{customerId}]
+
+### Retrieve [GET]
+
++ Parameters
+    + customerId (string, optional)
+
++ Request (application/json)
+
+    + Headers
+         
             Authorization: {token}  
 
 + Response 200
@@ -74,8 +104,7 @@ As a logged in partner, you can perform any action on our backend services.
 
 + Response 500
 
-
-### Set customer's deposit limit [PUT]
+### Set [PUT]
 
 + Parameters
 
@@ -117,7 +146,7 @@ As a logged in partner, you can perform any action on our backend services.
 
 + Response 500
 
-### Disable customer's deposit limit [DELETE]
+### Disable [DELETE]
 
 + Request
 
@@ -130,9 +159,9 @@ As a logged in partner, you can perform any action on our backend services.
 
 + Response 500
 
-## Customer's self-exclusion [/customers/{customerId}/self-exclusion]
+## Self-exclusion [/self-exclusion/{customerId}]
 
-### Retrieve customer's self-exclusion [GET]
+### Retrieve [GET]
 
 + Parameters
 
@@ -166,7 +195,7 @@ As a logged in partner, you can perform any action on our backend services.
 
 + Response 500
 
-### Set customer's self-exclusion [PUT]
+### Set [PUT]
 
 + Request(application/json)
 
@@ -197,7 +226,7 @@ As a logged in partner, you can perform any action on our backend services.
 
 + Response 500
 
-### Disable customer's self-exclusion [DELETE]
+### Disable [DELETE]
 
 + Request
 
@@ -210,9 +239,9 @@ As a logged in partner, you can perform any action on our backend services.
 
 + Response 500
 
-## Customer's cooling-off period [/customers/{customerId}/cooling-off-period]
+## Cooling-off period [/cooling-off-period/{customerId}]
 
-### Retrieve customer's cooling-off period [GET]
+### Retrieve [GET]
 
 + Parameters
 
@@ -238,5 +267,3 @@ As a logged in partner, you can perform any action on our backend services.
 + Response 404
 
 + Response 500
-
-## License's cooling-off period [/licenses/{licenseId}/cooling-off-period]
