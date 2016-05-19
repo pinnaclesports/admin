@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://apix.pinnaclesports.com/responsible-gaming/v1
+HOST: http://apix.pinnaclesports.com/responsible-gaming
 
 # Responsible gaming
 
@@ -10,8 +10,6 @@ HOST: http://apix.pinnaclesports.com/responsible-gaming/v1
 `Content-Type: application/json`
 
 `Authorization: {token}`
-
-`Accept-Language: en-GB`
 
 ## Response Codes
 
@@ -39,16 +37,18 @@ HOST: http://apix.pinnaclesports.com/responsible-gaming/v1
     </tr> 
 </table> 
 
-## Deposit limit [/deposit-limit]
+## Deposit limit [/customers/{customerId}/deposit-limit]
 
 ### Retrieve customer's deposit limit [GET]
+
++ Parameters
+    + customerId (string)
 
 + Request
 
     + Headers
          
             Content-Type: application/json
-            Accept-Language: en-GB
             Authorization: {token}  
 
 + Response 200
@@ -56,11 +56,14 @@ HOST: http://apix.pinnaclesports.com/responsible-gaming/v1
     + Body
     
             {
-              "frequency": "Weekly",
-              "limit": 100,
-              "resetsAt": "20:00 22/04/2016",
-              "timeRemaining": "1 day, 4 hours",
-              "coolOffPeriod": "7 days"
+                "PeriodInHours": 672,
+                "PeriodInDays": 28,
+                "StartDate": "2016-05-19T09:29",
+                "CurrentCycleStartDate": "2016-05-19T09:29",
+                "Amount": 100,
+                "Status": "Active",
+                "AddedBy": "cesarc",
+                "DateAdded":"2016-05-19T09:29"
             }
 
 + Response 401
@@ -76,14 +79,15 @@ HOST: http://apix.pinnaclesports.com/responsible-gaming/v1
 
     + Headers
          
-            Accept-Language: en-GB
             Authorization: {token}  
 
     + Body
         
             {
-                "frequency": "Weekly",
-                "limit": 100
+                "PeriodInHours": 672,
+                "StartDate": "2016-05-19T09:29",
+                "Amount": 100,
+                "AddedBy": "cesarc"
             }
 
 + Response 204
@@ -96,8 +100,10 @@ HOST: http://apix.pinnaclesports.com/responsible-gaming/v1
                 "message": "The request is invalid.",
                 "errors": 
                     {
-                        "request.frequency": ["The provided frequency is not allowed"],
-                        "request.limit": ["The limit must be a positive number"]
+                        "request.PeriodInHours": ["A positive number is expected"],
+                        "request.StartDate": ["The field is mandatory"],
+                        "request.Amount": ["A positive number is expected"],
+                        "request.AddedBy": ["The field is mandatory"]
                     }
             }
             
@@ -118,7 +124,7 @@ HOST: http://apix.pinnaclesports.com/responsible-gaming/v1
 
 + Response 500
 
-## Self-exclusion [/self-exclusion]
+## Self-exclusion [/customer/{customerId}/self-exclusion]
 
 ### Retrieve customer's self-exclusion [GET]
 
